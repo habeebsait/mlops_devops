@@ -1,0 +1,13 @@
+pandas
+numpy
+scipy
+scikit-learn
+river
+evidently
+pydantic
+kafka-python
+fastapi
+uvicorn
+requests
+joblib
+pyyaml

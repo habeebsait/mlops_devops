@@ -1,0 +1,168 @@
+You are an expert ML engineer + MLOps architect.
+Build an entire production-ready project for “Model Monitoring & Drift Detection in Phishing Detection”.
+Include complete code, folder structure, explanations, and integration steps.
+📌 PROJECT GOAL
+Create a full system that monitors a deployed phishing-detection ML model and detects:
+Data Drift (Covariate Drift)
+Prediction Drift
+Concept Drift (Performance Drift)
+Embedding Drift
+Model performance drops with delayed labels
+The system must run in real-time + daily batch modes and support alerts, dashboards, and automated retraining hooks.
+📌 DELIVERABLES REQUIRED
+Generate ALL of the following:
+1. Folder Structure
+A complete repo with:
+project/
+│── data/
+│── models/
+│── src/
+│   ├── ingestion/
+│   ├── monitoring/
+│   ├── drift_detectors/
+│   ├── dashboards/
+│   ├── retraining/
+│   ├── utils/
+│── scripts/
+│── notebooks/
+│── infra/
+│── docker/
+│── tests/
+│── README.md
+2. Code for Each Module
+Provide full implementations for:
+A) Data Ingestion
+API endpoint logging
+Kafka producer + consumer
+Logging schema for:
+input features
+model predictions & probabilities
+metadata (user-agent, domain, URL, hashed text)
+model version
+timestamp
+delayed labels
+B) Feature Store Logic
+Write + read features to Parquet (S3 or local)
+Versioning
+Sliding window queries
+3. Drift Detection Module
+Write COMPLETE Python modules for:
+i. Covariate Drift
+PSI
+KS-test
+Chi-square
+MMD
+PCA/UMAP embedding drift
+ii. Prediction Drift
+KL divergence
+JS divergence
+Entropy shift
+iii. Concept Drift
+Using river:
+ADWIN
+DDM
+EDDM
+iv. Drift thresholds & alert rules
+Write YAML configs + rule engine.
+4. Daily Batch Monitoring Scripts
+Create runnable scripts:
+batch_psi_check.py
+batch_ks_check.py
+batch_prediction_drift.py
+batch_embedding_drift.py
+batch_generate_report.py
+Each must:
+Load baseline window
+Compare with recent window
+Save drift summary JSON
+Trigger alert if threshold crossed
+5. Real-time Streaming Monitoring
+Build code using:
+Kafka consumer
+ADWIN drift detector
+Real-time prediction distribution tracker
+Write:
+realtime_monitor.py
+6. Dashboards
+Provide code + instructions for:
+Grafana
+PSI time-series graph
+Prediction distribution histogram
+Drift alerts panel
+Concept drift indicator
+Evidently Dashboard
+Data Drift Report
+Target Drift Report
+Prediction Drift Report
+7. Alerts
+Implement:
+Slack Alerts (webhook)
+Email Alerts
+Local logging + incident JSON reports
+Provide code:
+alert_manager.py
+8. Automated Retraining Pipeline
+Give code for:
+Load drifted data
+Curate training dataset
+Oversample phishing examples
+Train baseline model
+Evaluate with time-split validation
+Save model + version to models/
+Register to MLflow
+Scripts required:
+train.py
+evaluate.py
+register_model.py
+9. Airflow / Cron Jobs
+Provide:
+Full Airflow DAG for daily drift detection
+Cron alternative for simple environments
+10. README with Full Documentation
+Include:
+Architecture diagram (ASCII or mermaid)
+Explanation of each drift type
+How to run everything locally
+How to deploy
+How alerts work
+How retraining is triggered
+📌 TECH STACK
+Use ONLY these:
+Python 3.x
+Libraries:
+pandas, numpy, scipy
+scikit-learn
+river
+evidently
+pydantic
+kafka-python
+matplotlib (only for dashboards if needed)
+Infra:
+Kafka (local Docker)
+S3/local file store
+Docker
+Airflow optional
+Grafana optional
+📌 EXAMPLE DATA FEATURES (Phishing Detection)
+Ensure code supports:
+Input Features
+URL length, number of dots, number of digits
+Domain age
+Presence of IP
+Suspicious keywords
+HTML content features
+Email metadata
+NLP-based embeddings
+TF-IDF vectors
+ML model probability scores
+Metadata
+User-agent
+Region
+Referral
+Time of day
+Model version
+📌 FINAL REQUIREMENT
+Produce clean, production-quality code for every file.
+No pseudo-code.
+Everything must be runnable.
+Write clear comments + modular design.

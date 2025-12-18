@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detection Monitor</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="pulse">●</span> SYSTEM STATUS: <span id="system-status">ONLINE</span></h1>
+            <div class="timestamp" id="timestamp">--:--:--</div>
+        </header>
+
+        <div class="grid">
+            <!-- Key Metrics -->
+            <div class="card metric-card">
+                <h3>Current Error Rate</h3>
+                <div class="value" id="error-rate">0.00%</div>
+                <div class="label">Last 100 Requests</div>
+            </div>
+
+            <div class="card metric-card">
+                <h3>Drift Status</h3>
+                <div class="value status-ok" id="drift-status">STABLE</div>
+                <div class="label">ADWIN Detector</div>
+            </div>
+
+            <div class="card metric-card">
+                <h3>Total Requests</h3>
+                <div class="value" id="total-requests">0</div>
+                <div class="label">Session Total</div>
+            </div>
+
+            <!-- Main Chart -->
+            <div class="card chart-card">
+                <h3>Real-time Error Rate</h3>
+                <canvas id="errorChart"></canvas>
+            </div>
+
+            <!-- Alert Feed -->
+            <div class="card feed-card">
+                <h3>System Alerts</h3>
+                <div class="alert-feed" id="alert-feed">
+                    <!-- Alerts will appear here -->
+                    <div class="alert-item info">System initialized. Waiting for data...</div>
+                </div>
+            </div>
+
+            <!-- Manual Check -->
+            <div class="card manual-card">
+                <h3>Manual Phishing Check</h3>
+                <div class="input-group">
+                    <input type="text" id="manual-input" placeholder="Enter URL or Email Content...">
+                    <button onclick="checkPhishing()">Check</button>
+                </div>
+                <div id="manual-result" class="result-box hidden">
+                    <span id="result-text"></span>
+                    <div class="confidence-bar">
+                        <div id="confidence-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+
+</html>

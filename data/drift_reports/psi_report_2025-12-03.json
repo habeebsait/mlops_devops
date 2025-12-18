@@ -1,0 +1,18 @@
+{
+    "url_length": {
+        "psi": 0.0,
+        "drift_detected": false
+    },
+    "num_dots": {
+        "psi": 0.0,
+        "drift_detected": false
+    },
+    "num_digits": {
+        "psi": 0.0,
+        "drift_detected": false
+    },
+    "domain_age": {
+        "psi": 0.0,
+        "drift_detected": false
+    }
+}
